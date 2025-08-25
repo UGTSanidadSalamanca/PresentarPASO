@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Comunicación P.A.S.O. - UGT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Subtle Action -->
+    <!-- Application Structure Plan: Se ha diseñado una experiencia de scroll narrativo que guía al usuario a través de la propuesta de forma lógica: 1. Hero (captar atención), 2. El Desafío (contexto), 3. La Solución P.A.S.O. (concepto central con un toggle interactivo), 4. Beneficios Clave (grid interactivo), 5. Estrategia en Acción (pestañas para organizar detalles), 6. Inversión (aspectos prácticos) y 7. Conclusión (cierre y CTA). Esta estructura se eligió para construir un argumento persuasivo paso a paso, haciendo que la información compleja sea digerible y atractiva, en lugar de un simple volcado de texto. -->
+    <!-- Visualization & Content Choices: Dado que el informe es cualitativo, no se usan gráficos de datos. En su lugar, se emplean componentes visuales e interactivos: 1. El Desafío -> Tarjetas con iconos (HTML/CSS) para visualizar los problemas. 2. La Solución -> Un toggle (JS) para comparar 'Antes' vs 'P.A.S.O.', demostrando el cambio estratégico de forma clara. 3. Beneficios -> Un grid de tarjetas con efectos hover para hacerlos escaneables y atractivos. 4. Estrategia -> Un sistema de pestañas (JS) para organizar los detalles de implementación sin abrumar al usuario. Estas elecciones priorizan la claridad conceptual y la interacción del usuario. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F5F2;
+            color: #3D352E;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6B6259;
+        }
+        .tab-active {
+            border-color: #D9534F;
+            color: #D9534F;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            border-color: transparent;
+            color: #6B6259;
+        }
+        .benefit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background-color: rgba(248, 245, 242, 0.8);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="nav-header" class="sticky-nav shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="font-bold text-xl text-[#D9534F]">P.A.S.O. <span class="font-normal text-sm text-gray-600">by UGT</span></div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#desafio" class="text-gray-700 hover:text-[#D9534F] transition-colors">El Desafío</a>
+                <a href="#solucion" class="text-gray-700 hover:text-[#D9534F] transition-colors">La Solución</a>
+                <a href="#beneficios" class="text-gray-700 hover:text-[#D9534F] transition-colors">Beneficios</a>
+                <a href="#estrategia" class="text-gray-700 hover:text-[#D9534F] transition-colors">Estrategia</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32">
+            <div class="container mx-auto text-center px-6">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+                    <span class="text-[#D9534F]">P.A.S.O.</span>: Reactivando la Conexión de UGT en la Era Digital
+                </h1>
+                <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-600">
+                    Una iniciativa estratégica que aprovecha el humor sarcástico y la sorpresa para revolucionar cómo UGT se conecta con los trabajadores, especialmente las nuevas generaciones.
+                </p>
+                <div class="mt-8">
+                    <p class="text-sm font-semibold text-gray-500">Integrado en los objetivos de UGT: Modernizar, Feminizar, Rejuvenecer y Diversificar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="desafio" class="py-16 bg-[#EFEBE8]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">El Contexto: Un Desafío Urgente</h2>
+                    <p class="section-subtitle mt-4 max-w-2xl mx-auto">Vivimos en un entorno digital que exige nuevas formas de comunicación para superar la apatía y la desinformación.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="text-5xl mb-4">📉</div>
+                        <h3 class="text-xl font-semibold mb-2">Desafección Creciente</h3>
+                        <p class="text-gray-600">La confianza en el sindicalismo tradicional disminuye, especialmente entre los más jóvenes.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="text-5xl mb-4">📱</div>
+                        <h3 class="text-xl font-semibold mb-2">Redes Sociales Dominantes</h3>
+                        <p class="text-gray-600">Son la principal fuente de información, donde el contenido tradicional es a menudo ignorado.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="text-5xl mb-4">📢</div>
+                        <h3 class="text-xl font-semibold mb-2">Necesidad de Innovación</h3>
+                        <p class="text-gray-600">UGT necesita urgentemente aumentar su capacidad de comunicación y campañas digitales directas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucion" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">Nuestra Solución: Una Estrategia Disruptiva</h2>
+                    <p class="section-subtitle mt-4 max-w-2xl mx-auto">P.A.S.O. ataca la pasividad desde el humor y la credibilidad, no desde la confrontación.</p>
+                </div>
+                <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-center mb-2 text-[#D9534F]">P.A.S.O.</h3>
+                    <p class="text-center text-gray-500 mb-6 font-mono text-sm">Passive and Uninformed Syndrome of Workers</p>
+                    <p class="text-center mb-8">Un nombre irónico y memorable que, al estar **vinculado explícitamente a UGT**, gana una credibilidad fundamental. UGT asume la responsabilidad de los mensajes, diferenciándose radicalmente de los "grupos anónimos de internet" y mitigando los riesgos de la desinformación.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="py-16 bg-[#EFEBE8]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">Beneficios Clave para UGT</h2>
+                    <p class="section-subtitle mt-4 max-w-2xl mx-auto">Adoptar P.A.S.O. no es solo una campaña, es una inversión estratégica con retornos claros.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="benefit-card bg-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">🚀</div>
+                        <h3 class="text-xl font-semibold mb-2">Alta Viralización y Memoria</h3>
+                        <p class="text-gray-600">El humor sarcástico en memes y vídeos cortos capta la atención y hace que los mensajes sean recordados.</p>
+                    </div>
+                    <div class="benefit-card bg-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-semibold mb-2">Conexión con Nuevas Audiencias</h3>
+                        <p class="text-gray-600">"Hablar el idioma de los jóvenes" es clave para rejuvenecer el sindicato y potenciar la campaña "Ganas".</p>
+                    </div>
+                    <div class="benefit-card bg-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h3 class="text-xl font-semibold mb-2">Estímulo a la Reflexión</h3>
+                        <p class="text-gray-600">La sátira política puede abrir nuevos puntos de vista y generar debate, impulsando la búsqueda de más información.</p>
+                    </div>
+                    <div class="benefit-card bg-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">🤝</div>
+                        <h3 class="text-xl font-semibold mb-2">Refuerzo de Identidad de Grupo</h3>
+                        <p class="text-gray-600">Unir y fortalecer la identidad de los trabajadores que se identifican con la crítica, fomentando la camaradería.</p>
+                    </div>
+                    <div class="benefit-card bg-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">❤️</div>
+                        <h3 class="text-xl font-semibold mb-2">Humanización y Conexión Emocional</h3>
+                        <p class="text-gray-600">Permitir que trabajadores reales cuenten sus historias con un lenguaje cercano genera simpatía y credibilidad.</p>
+                    </div>
+                     <div class="benefit-card bg-white p-8 rounded-lg">
+                        <div class="text-4xl mb-4">📈</div>
+                        <h3 class="text-xl font-semibold mb-2">Resultados Medibles</h3>
+                        <p class="text-gray-600">A través de CTAs claros, podemos medir el interés, la afiliación y la participación en las campañas de UGT.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="estrategia" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title">La Estrategia en Acción</h2>
+                    <p class="section-subtitle mt-4 max-w-2xl mx-auto">Un plan de implementación claro y estructurado en tres pilares fundamentales.</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="border-b border-gray-200 mb-8">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button id="tab-A" class="tab-btn tab-active py-4 px-1 border-b-2 text-center text-sm font-medium">A. Contenido y Tono</button>
+                            <button id="tab-B" class="tab-btn tab-inactive py-4 px-1 border-b-2 text-center text-sm font-medium">B. Refuerzo de Marca</button>
+                            <button id="tab-C" class="tab-btn tab-inactive py-4 px-1 border-b-2 text-center text-sm font-medium">C. Llamadas a la Acción</button>
+                        </nav>
+                    </div>
+
+                    <div id="content-A" class="tab-content space-y-4">
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Sarcasmo Consciente:</strong> Crear contenidos que justifiquen irónicamente la pasividad para resaltar el absurdo de la inacción.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Píldoras de Valor:</strong> Intercalar el humor con datos relevantes sobre precariedad o derechos laborales.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Storytelling Irónico:</strong> "Micro-historias" que reflejen situaciones reales y el impacto de la pasividad, respaldadas por UGT.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Calidad Visual:</strong> Explotar memes, vídeos y caricaturas con un estilo consistente y de alta calidad.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Lenguaje Coloquial:</strong> Evitar tecnicismos y usar el "lenguaje de la calle" para conectar.</p>
+                    </div>
+
+                    <div id="content-B" class="tab-content hidden space-y-4">
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Branding Integrado:</strong> Presentar P.A.S.O. como una campaña de UGT, con guiños visuales a la marca.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Voz Colectiva y Portavoces:</strong> P.A.S.O. mantiene su tono, pero líderes de UGT complementan y humanizan el mensaje.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Diálogo Activo:</strong> Fomentar la conversación en comentarios, respondiendo con sarcasmo pero guiando a la reflexión.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Conexión con la Agenda Real:</strong> Ironizar sobre temas de actualidad que UGT esté debatiendo para crear relevancia.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Hashtags Estratégicos:</strong> Combinar #ElPoderDeLaInaccion con #ConUGTGanas para asociar y ampliar el alcance.</p>
+                    </div>
+
+                    <div id="content-C" class="tab-content hidden space-y-4">
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>CTAs Creativas y Directas:</strong> "Si esto te hizo reír, quizás también te haga pensar. Únete a quienes sí actúan: ¡Afíliate a UGT!"</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Fomentar la Información:</strong> Dirigir a los usuarios a la web de UGT para que conozcan sus derechos y las propuestas del sindicato.</p>
+                        <p class="p-4 bg-gray-50 rounded-lg"><strong>Movilización Digital:</strong> Conectar con iniciativas reales como la plataforma de peticiones para recolectar datos y movilizar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="inversion" class="py-16 bg-[#EFEBE8]">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">Inversión y Capacidades</h2>
+                <p class="section-subtitle mt-4 max-w-2xl mx-auto">Para garantizar el éxito, es fundamental invertir en las herramientas y habilidades adecuadas.</p>
+                <div class="mt-10 max-w-3xl mx-auto grid sm:grid-cols-2 gap-8 text-left">
+                    <div class="bg-white p-6 rounded-lg">
+                        <h3 class="font-semibold text-lg mb-2">🛠️ Herramientas Digitales</h3>
+                        <p class="text-gray-600">Utilización de herramientas gratuitas o de bajo coste como Canva, CapCut y ChatGPT para crear contenido de alta calidad de forma ágil.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg">
+                        <h3 class="font-semibold text-lg mb-2">🧠 Desarrollo de Habilidades</h3>
+                        <p class="text-gray-600">Capacitación del equipo en competencias de comunicación digital, estrategia de redes y creación de contenido viral.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg sm:col-span-2">
+                        <h3 class="font-semibold text-lg mb-2">📊 Datos y Segmentación</h3>
+                        <p class="text-gray-600">Consideración de bases de datos de afiliados segmentadas por edad y sector para dirigir mensajes de forma más efectiva y personalizada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold max-w-3xl mx-auto">Una apuesta por la reinvención de nuestra conexión con la sociedad.</h2>
+                <p class="mt-6 text-lg max-w-2xl mx-auto text-gray-600">
+                    P.A.S.O. no es solo marketing; es una estrategia potente y ética para sacudir la pasividad, generar reflexión y fortalecer nuestro movimiento sindical en la era digital. Es una herramienta para movilizar a quienes más nos necesitan.
+                </p>
+                <div class="mt-10">
+                    <a href="#" class="bg-[#D9534F] text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-opacity-90 transition-all shadow-md">Aprobar la Iniciativa P.A.S.O.</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#3D352E] text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 UGT - Propuesta de Estrategia de Comunicación Digital P.A.S.O.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.id.replace('tab-', 'content-');
+                    
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('tab-inactive');
+                    });
+
+                    tab.classList.add('tab-active');
+                    tab.classList.remove('tab-inactive');
+
+                    contents.forEach(content => {
+                        if (content.id === targetId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = document.getElementById('nav-header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
